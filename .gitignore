@@ -1,0 +1,10 @@
+*.exe
+.DS_Store
+*.out
+*.c
+*.o
+test.l
+test.y
+y.output
+*.h
+*.cpp
