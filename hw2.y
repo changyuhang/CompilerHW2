@@ -97,11 +97,11 @@ print_stmt:     PRINT print_list
 print_list:     print_list ',' pitem
         |       pitem
         ;
-pitem :         FLOAT_NUMBER    {std::cout<<$1;}
-        |       NUMBER          {std::cout<<$1;}
+pitem :         FLOAT_NUMBER    {printf("%.6lf",$1);}
+        |       NUMBER          {printf("%.6lf",$1);}
         |       ID              {
                                   if(vars[*$1].FLOAT){
-                                    std::cout<<vars[*$1].flo_num;
+                                    printf("%.6lf",vars[*$1].flo_num);
                                   }else{
                                     string_out(*vars[*$1].str);
                                     delete $1;
@@ -110,7 +110,7 @@ pitem :         FLOAT_NUMBER    {std::cout<<$1;}
 
                             }
           |       STR          {string_out(*$1);}
-          |       expr         {std::cout<<$1;}
+          |       expr         {printf("%.6lf",$1);}
 ;
 /*read_stmt:      READS ID
  |       READN nid_list
