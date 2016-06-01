@@ -110,7 +110,7 @@ pitem :         FLOAT_NUMBER    {std::cout<<$1;}
 
                             }
           |       STR          {string_out(*$1);}
-          |       expr         {}
+          |       expr         {std::cout<<$1;}
 ;
 /*read_stmt:      READS ID
  |       READN nid_list
