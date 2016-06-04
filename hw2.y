@@ -73,7 +73,7 @@ assign_stmt:    ID '=' expr             {
                                           vars[*$1].flo_num = $3;
                                           vars[*$1].FLOAT=true;
                                         }
-        |        ID '=' ID              {vars[*$1].flo_num=vars[*$3].flo_num;}
+        |       ID '=' ID               {vars[*$1].flo_num=vars[*$3].flo_num;}
         |       ID '=' NUMBER           {
                                           /*vars[*$1].INTEGER=true;*/
                                           vars[*$1].FLOAT=true;
@@ -130,6 +130,17 @@ expr :          expr '+' expr   {$$=$1+$3;}
 void yyerror(char *s) {
     std::cout << s << std::endl;
 }
-int main(void) {
-    yyparse();
+extern FILE* yyin;
+int main(int argc, char** argv)
+{
+     if(argc==2)
+     {
+         yyin = fopen(argv[1], "r");
+         if(!yyin)
+         {
+             fprintf(stderr, "can't read file %s\n", argv[1]);
+             return 1;
+         }
+     }
+     yyparse();
 }
