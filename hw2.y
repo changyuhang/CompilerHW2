@@ -131,13 +131,10 @@ void yyerror(char *s) {
     std::cout << s << std::endl;
 }
 extern FILE* yyin;
-int main(int argc, char** argv)
-{
-     if(argc==2)
-     {
+int main(int argc, char** argv){
+     if(argc==2){
          yyin = fopen(argv[1], "r");
-         if(!yyin)
-         {
+         if(!yyin){
              fprintf(stderr, "can't read file %s\n", argv[1]);
              return 1;
          }
