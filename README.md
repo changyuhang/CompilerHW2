@@ -131,5 +131,5 @@ execution result.
 
 	Execution command and output:  
 
-    	$ ./hw2 test/area.test
+    	$ ./hw2 < test/area.test  //your file path
     	7.000000 153.938037
