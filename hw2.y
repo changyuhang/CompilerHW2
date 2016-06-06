@@ -47,6 +47,7 @@
 %right '='
 %left '+' '-'
 %left '*' '/'
+%left '^'
 %%
 program :   var_list stmt_list
         |   stmt_list
@@ -123,6 +124,7 @@ expr :          expr '+' expr   {$$=$1+$3;}
         |       expr '*' expr   {$$=$1*$3;}
         |       expr '/' expr   {$$=$1/$3;}
         |       expr '^' expr   {$$=pow($1,int($3));}
+        |       '-' expr        {$$=-$2;}
         |       ID              {$$=vars[*$1].flo_num;}
         |       NUMBER          {}
 ;
